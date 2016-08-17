@@ -6,13 +6,13 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, "golfclubsaregreat"
+    set :session_secret, "haikus for the soul"
   end
 
 
   get '/' do 
     erb :index
-    #welcome to fwitter!!! 
+    #haikuyourpainaway
   end
 
   helpers do
