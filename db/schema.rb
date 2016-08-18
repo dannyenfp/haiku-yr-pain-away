@@ -11,18 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 5) do
+ActiveRecord::Schema.define(version: 3) do
 
-  create_table "golf_bags", force: :cascade do |t|
-    t.string  "name"
-    t.integer "capacity"
-    t.integer "user_id"
+  create_table "haikus", force: :cascade do |t|
+    t.string "name"
+    t.string "mood_id"
+    t.string "user_id"
   end
 
-  create_table "golf_clubs", force: :cascade do |t|
+  create_table "moods", force: :cascade do |t|
     t.string  "name"
-    t.string  "manufacturer"
-    t.integer "golf_bag_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

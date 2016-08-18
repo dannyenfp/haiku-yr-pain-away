@@ -1,0 +1,7 @@
+<h1>EDIT YR FEELINGS (and haiku) </h1>
+<form method="post" action="/haikus/<%= @haiku.id %>">
+<input id="hidden" type="hidden" name="_method" value="patch">
+<input type="text" name="name" value="<%= @haiku.name %>" placeholder="<%= @haiku.name %>">
+
+<input class="btn btn-primary" type="submit" value="Edit">
+</form>

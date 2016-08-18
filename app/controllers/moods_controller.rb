@@ -1,9 +1,9 @@
-class MoodController < ApplicationController 
+class MoodsController < ApplicationController 
 
   #creates a new mood 
   get "/moods/new" do
     redirect_if_not_logged_in
-    erb :'/mood/new'
+    erb :'/moods/new'
   end
 
 
@@ -12,16 +12,20 @@ class MoodController < ApplicationController
   post '/moods/new' do 
     @user = current_user
     mood = @user.moods.create(name: params[:name])
-    intake = mood.haikus.create(name: params[:haikus][:name])
+    haiku = mood.haikus.create(name: params[:haikus][:name])
     redirect '/haikus'
   end
 
-# edit 
+# edit the mood
   get '/moods/:id/edit' do
     redirect_if_not_logged_in
     @mood = Mood.find_by_id(params[:id])
     erb :'moods/edit'
   end 
+
+  
+
+
 
 
 

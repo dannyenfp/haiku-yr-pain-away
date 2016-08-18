@@ -1,58 +1,44 @@
 class UsersController < ApplicationController 
 
-  get '/users/:id' do
-    if !logged_in?
-      redirect '/bags'
-    end
-
-    @user = User.find(params[:id])
-    if !@user.nil? && @user == current_user
-      erb :'users/show'
-    else
-      redirect '/bags'
-    end
-  end
-
   get '/signup' do
-    if !session[:user_id]
-      erb :'users/new'
+    if logged_in?
+      redirect '/haikus'
     else
-      redirect to '/clubs'
+    erb :'users/signup'
     end
   end
 
-  post '/signup' do 
-    if params[:username] == "" || params[:password] == ""
-      redirect to '/signup'
+  post '/signup' do
+    if params.values.include?('')
+      redirect '/signup'
     else
-      @user = User.create(:username => params[:username], :password => params[:password])
+      @user = User.create(username: params[:username], password: params[:password])
       session[:user_id] = @user.id
-      redirect '/bags'
+    redirect '/haikus'
     end
   end
-
-  get '/login' do 
-    @error_message = params[:error]
-    if !session[:user_id]
-      erb :'users/login'
+  
+  get '/login' do
+    if logged_in?
+      redirect '/haikus'
     else
-      redirect '/bags'
+      erb :'users/login'
     end
   end
 
   post '/login' do
-    user = User.find_by(:username => params[:username])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect "/bags"
+    @user = User.find_by(username: params[:username])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect '/haikus'
     else
-      redirect to '/signup'
+      redirect '/login'
     end
   end
 
   get '/logout' do
     if session[:user_id] != nil
-      session.destroy
+      session.clear
       redirect to '/login'
     else
       redirect to '/'

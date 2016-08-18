@@ -1,0 +1,21 @@
+<h1>Hello <%=@user.username %>!</h1>
+
+<a href="/moods/new"><button type="button" class="btn btn-default">Create A New Mood</button></a>
+
+
+<% @moods.each do |mood|%>
+<% if mood.user_id == @user.id %>
+
+<h2><%= mood.name %></h2>
+<a href="/moods/<%=mood.id%>/edit">Edit Mood</a>
+<a href="/moods/<%=mood.id%>/delete">Delete Mood</a>
+<a href="moods/new/<%=mood.id%>"> New Mood</a>
+
+<% mood.haikus.each do |haiku| %>
+<h4></i> <%= haiku.name %>
+<a href="/haikus/<%= haiku.id %>/edit">Edit</a>
+<a href="/haikus/<%= haiku.id %>/delete">Delete</a>
+</h4>
+<% end %>
+<% end %>
+<% end %>

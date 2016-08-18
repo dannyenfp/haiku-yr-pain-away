@@ -1,0 +1,6 @@
+<h1>WRITE YR FEELINGS IN HAIKU FORM ABOUT YR <%= @mood.name %></h1>
+
+<form method="post" action="/haikus/new/<%= @mood.id %>">
+<input type="text" name="name" placeholder="Haiku Mood">
+<input class="btn btn-primary" type="submit" name="create" value="Create">
+</form>
