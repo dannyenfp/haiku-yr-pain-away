@@ -24,19 +24,19 @@ class MoodsController < ApplicationController
   end 
 
    patch '/moods/:id' do 
-    @mood = mood.find_by_id(params[:id])
+    @mood = Mood.find_by_id(params[:id])
     @mood.name = params[:name]
     @mood.save
     redirect '/haikus'
   end
 
   get '/moods/:id/delete' do
-    @mood = mood.find_by_id(params[:id])
+    @mood = Mood.find_by_id(params[:id])
     erb :'moods/delete'
   end
 
   delete '/moods/:id' do 
-    @mood = mood.find_by_id(params[:id])
+    @mood = Mood.find_by_id(params[:id])
     @mood.destroy
     redirect '/haikus'
   end

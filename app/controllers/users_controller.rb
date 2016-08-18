@@ -4,13 +4,13 @@ class UsersController < ApplicationController
     if logged_in?
       redirect '/haikus'
     else
-    erb :'users/signup'
+    erb :'users/new'
     end
   end
 
   post '/signup' do
     if params.values.include?('')
-      redirect '/signup'
+      redirect '/users/new'
     else
       @user = User.create(username: params[:username], password: params[:password])
       session[:user_id] = @user.id

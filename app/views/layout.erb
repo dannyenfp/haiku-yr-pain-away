@@ -7,10 +7,9 @@
   <body>
     <nav>
       <% if logged_in? %>
-
-        <a href="/moods/new"> Create a new mood </a>
+\
         <a href="/logout"> Log Out </a>
-        <p>Welcome, <%=current_user.username %></p>
+        <p>Welcome, you're currently logged in as <%=current_user.username %></p>
 
       <% else %>
         <a href="/signup">Sign Up</a>
