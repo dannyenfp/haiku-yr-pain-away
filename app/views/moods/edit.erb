@@ -1,0 +1,15 @@
+<h1>Edit Mood</h1>
+
+<form method="post" action="/moods/<%=@mood.id%>">
+<input id="hidden" type="hidden" name="_method" value="PATCH">
+<input type="text" name="name" value="<%=@mood.name%>"><br><br>
+
+<% @mood.haikus.each do |haiku| %>
+<h1><%= haiku.name %></h1>
+<a href="/haikus/<%= haiku.id %>/edit">Edit Haiku</a>
+<a href="/haikus/<%= haiku.id %>/delete">Delete Haiku</a>
+<% end %>
+
+<br>
+<input class="btn btn-primary" type="submit" value="Update">
+</form>

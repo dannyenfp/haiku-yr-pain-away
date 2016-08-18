@@ -1,0 +1,9 @@
+<h1>Deleting <%= @mood.name %></h1>
+<br> 
+
+<h2>Are you sure you want to delete this mood?</h2>
+
+<form method="post" action="/moods/<%=@mood.id%>">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="delete">
+<form>
