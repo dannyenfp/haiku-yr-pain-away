@@ -10,8 +10,7 @@ class MoodsController < ApplicationController
   #once submitted this will redirect to a haiku page to create an associated
   #haiku, not created yet
   post '/moods/new' do 
-    @user = current_user
-    mood = @user.moods.create(name: params[:name])
+    mood = current_user.moods.find_or_create_by(name: params[:name])
     haiku = mood.haikus.create(name: params[:haikus][:name])
     redirect '/haikus'
   end

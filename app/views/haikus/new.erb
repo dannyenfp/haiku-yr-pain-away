@@ -1,6 +1,14 @@
-<h1>WRITE YR FEELINGS IN HAIKU FORM ABOUT YR <%= @mood.name %></h1>
+<center> 
+<p>Write a beautiful haiku that really captures the essence of being <%= @mood.name %></p>
+<br> 
 
 <form method="post" action="/haikus/new/<%= @mood.id %>">
-<input type="text" name="name" placeholder="Haiku Mood">
-<input class="btn btn-primary" type="submit" name="create" value="Create">
+<textarea type=text name="name" placeholder="a beautiful haiku"> </textarea>
+<p></p>
+
+<p> <input class="btn btn-primary" type="submit" name="create" value="Create"> </p>
 </form>
+
+</center>
+
+<p> or head back to <a href="/haikus">  all of your previous moods</a> to see your emotional journey </p>

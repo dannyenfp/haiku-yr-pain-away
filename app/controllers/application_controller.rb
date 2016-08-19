@@ -12,7 +12,7 @@ class ApplicationController < Sinatra::Base
 
   get '/' do 
     erb :index
-    #haikuyourpainaway
+    #haikuyour
   end
 
   helpers do
